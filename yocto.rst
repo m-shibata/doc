@@ -9,7 +9,9 @@ Yoctoドキュメントの翻訳
 
     sudo apt-get install git xsltproc
 
-Pokyの`Gitリポジトリ`_をクローンして、`GitHub`_に登録します。 ::
+[PokyのGitリポジトリ](http://git.yoctoproject.org/cgit/cgit.cgi/poky/)をクローンして、
+[GitHub](https://github.com/m-shibata)に登録します。GitHub上のリポジトリは
+あらかじめ作成しておいてください。 ::
 
     mkdir yocto
     cd yocto
@@ -18,9 +20,6 @@ Pokyの`Gitリポジトリ`_をクローンして、`GitHub`_に登録します�
     git remote set-url origin git@github.com:m-shibata/poky
     git push origin master
 
-.. _Gitリポジトリ: http://git.yoctoproject.org/cgit/cgit.cgi/poky/
-
-.. _GitHub: https://github.com/m-shibata
 
 翻訳用のブランチを作り、pushします。 ::
 
