@@ -162,8 +162,38 @@ LN変数に翻訳したい言語コードを付与するだけです。
 これで翻訳されたドキュメントが作成されるはずです。
 
 
+上流と同期する
+--------------
+
+翻訳用のブランチの内容を上流のそれと常に同期しておく必要があります。
+
+まず、masterを上流を指定してpullし、ローカルにpushします。
+masterブランチはいじっていないはずなので、単純にpullできるはずです。 ::
+
+    git checkout master
+    git pull git://git.yoctoproject.org/poky master
+    git push origin master
+
+次に翻訳用のブランチをrebaseしておきます。Makefile以外は元データを
+いじっておらず、Makefile自体もそれほど大きな改変ではないので、
+大抵の場合は単純にrebaseできるものと思います。 ::
+
+    git checkout i18n
+    git rebase master
+
+ドキュメントが更新されているようなら、poファイルやpotファイルを
+更新しておきましょう。 ::
+
+    make DOC=yocto-project-qs updatepo
+    git commit -av
+
+最後にpushすれば完了です。ただしrebase前のものがpushされている
+場合はあらかじめrebase分のコミットを巻き戻しておきます。 ::
+
+    git push -f origin HEAD~6:i18n
+    git push origin i18n
+
 TODO
 ====
 
-* 上流との同期方法
 * 作成したドキュメントの公開方法
